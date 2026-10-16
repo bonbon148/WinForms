@@ -39,10 +39,11 @@
 			// labelTime
 			// 
 			this.labelTime.AutoSize = true;
+			this.labelTime.BackColor = System.Drawing.SystemColors.HotTrack;
 			this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelTime.Location = new System.Drawing.Point(13, 13);
 			this.labelTime.Name = "labelTime";
-			this.labelTime.Size = new System.Drawing.Size(324, 63);
+			this.labelTime.Size = new System.Drawing.Size(318, 61);
 			this.labelTime.TabIndex = 0;
 			this.labelTime.Text = "Current time";
 			this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -62,6 +63,7 @@
 			this.cbShowDate.TabIndex = 1;
 			this.cbShowDate.Text = "Show date";
 			this.cbShowDate.UseVisualStyleBackColor = true;
+			this.cbShowDate.CheckedChanged += new System.EventHandler(this.cbShowDate_CheckedChanged);
 			// 
 			// cbShowWeekday
 			// 
@@ -83,6 +85,7 @@
 			this.btnHideControls.TabIndex = 3;
 			this.btnHideControls.Text = "Hide controls";
 			this.btnHideControls.UseVisualStyleBackColor = true;
+			this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
 			// 
 			// MainForm
 			// 
