@@ -19,10 +19,9 @@ namespace Clock
 			this.Location = new Point
 			(
 				Screen.PrimaryScreen.Bounds.Right - this.Width - 50, 
-				Screen.PrimaryScreen.Bounds.Bottom / 20
-
-				
+				Screen.PrimaryScreen.Bounds.Bottom / 20				
 			);
+			SetVisibility(false);
 		}
 
 		//			  Methods:
@@ -53,6 +52,5 @@ namespace Clock
 		private void labelTime_DoubleClick(object sender, EventArgs e) =>
 		
 			SetVisibility(true);
-		
 	}
 }
