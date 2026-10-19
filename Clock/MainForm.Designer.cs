@@ -30,10 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.labelTime = new System.Windows.Forms.Label();
-			this.timer = new System.Windows.Forms.Timer(this.components);
-			this.cbShowDate = new System.Windows.Forms.CheckBox();
-			this.cbShowWeekday = new System.Windows.Forms.CheckBox();
-			this.btnHideControls = new System.Windows.Forms.Button();
 			this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.tsmiTopmost = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiShowControls = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,12 +39,16 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiFont = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiColor = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiForegroundColor = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiAutorun = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+			this.timer = new System.Windows.Forms.Timer(this.components);
+			this.cbShowDate = new System.Windows.Forms.CheckBox();
+			this.cbShowWeekday = new System.Windows.Forms.CheckBox();
+			this.btnHideControls = new System.Windows.Forms.Button();
 			this.contextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -65,44 +65,6 @@
 			this.labelTime.Text = "Current time";
 			this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.labelTime.DoubleClick += new System.EventHandler(this.labelTime_DoubleClick);
-			// 
-			// timer
-			// 
-			this.timer.Enabled = true;
-			this.timer.Tick += new System.EventHandler(this.timer_Tick);
-			// 
-			// cbShowDate
-			// 
-			this.cbShowDate.AutoSize = true;
-			this.cbShowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.cbShowDate.Location = new System.Drawing.Point(12, 237);
-			this.cbShowDate.Name = "cbShowDate";
-			this.cbShowDate.Size = new System.Drawing.Size(170, 36);
-			this.cbShowDate.TabIndex = 1;
-			this.cbShowDate.Text = "Show date";
-			this.cbShowDate.UseVisualStyleBackColor = true;
-			// 
-			// cbShowWeekday
-			// 
-			this.cbShowWeekday.AutoSize = true;
-			this.cbShowWeekday.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.cbShowWeekday.Location = new System.Drawing.Point(12, 279);
-			this.cbShowWeekday.Name = "cbShowWeekday";
-			this.cbShowWeekday.Size = new System.Drawing.Size(226, 36);
-			this.cbShowWeekday.TabIndex = 2;
-			this.cbShowWeekday.Text = "Show weekday";
-			this.cbShowWeekday.UseVisualStyleBackColor = true;
-			// 
-			// btnHideControls
-			// 
-			this.btnHideControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnHideControls.Location = new System.Drawing.Point(12, 321);
-			this.btnHideControls.Name = "btnHideControls";
-			this.btnHideControls.Size = new System.Drawing.Size(356, 65);
-			this.btnHideControls.TabIndex = 3;
-			this.btnHideControls.Text = "Hide controls";
-			this.btnHideControls.UseVisualStyleBackColor = true;
-			this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
 			// 
 			// contextMenu
 			// 
@@ -129,13 +91,15 @@
 			this.tsmiTopmost.Name = "tsmiTopmost";
 			this.tsmiTopmost.Size = new System.Drawing.Size(210, 24);
 			this.tsmiTopmost.Text = "Topmost";
+			this.tsmiTopmost.CheckedChanged += new System.EventHandler(this.tsmiTopmost_CheckedChanged);
 			// 
 			// tsmiShowControls
 			// 
 			this.tsmiShowControls.CheckOnClick = true;
 			this.tsmiShowControls.Name = "tsmiShowControls";
-			this.tsmiShowControls.Size = new System.Drawing.Size(176, 24);
+			this.tsmiShowControls.Size = new System.Drawing.Size(210, 24);
 			this.tsmiShowControls.Text = "Show controls";
+			this.tsmiShowControls.CheckedChanged += new System.EventHandler(this.tsmiShowControls_CheckedChanged);
 			// 
 			// toolStripSeparator1
 			// 
@@ -146,15 +110,17 @@
 			// 
 			this.tsmiShowDate.CheckOnClick = true;
 			this.tsmiShowDate.Name = "tsmiShowDate";
-			this.tsmiShowDate.Size = new System.Drawing.Size(176, 24);
+			this.tsmiShowDate.Size = new System.Drawing.Size(210, 24);
 			this.tsmiShowDate.Text = "Show date";
+			this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
 			// 
 			// tsmiShowWeekday
 			// 
 			this.tsmiShowWeekday.CheckOnClick = true;
 			this.tsmiShowWeekday.Name = "tsmiShowWeekday";
-			this.tsmiShowWeekday.Size = new System.Drawing.Size(176, 24);
+			this.tsmiShowWeekday.Size = new System.Drawing.Size(210, 24);
 			this.tsmiShowWeekday.Text = "Show weekday";
+			this.tsmiShowWeekday.CheckedChanged += new System.EventHandler(this.tsmiShowWeekday_CheckedChanged);
 			// 
 			// toolStripSeparator2
 			// 
@@ -176,28 +142,28 @@
 			this.tsmiColor.Size = new System.Drawing.Size(210, 24);
 			this.tsmiColor.Text = "Color";
 			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
-			// 
 			// tsmiBackgroundColor
 			// 
 			this.tsmiBackgroundColor.Name = "tsmiBackgroundColor";
-			this.tsmiBackgroundColor.Size = new System.Drawing.Size(224, 26);
+			this.tsmiBackgroundColor.Size = new System.Drawing.Size(211, 26);
 			this.tsmiBackgroundColor.Text = "Background color";
 			// 
 			// tsmiForegroundColor
 			// 
 			this.tsmiForegroundColor.Name = "tsmiForegroundColor";
-			this.tsmiForegroundColor.Size = new System.Drawing.Size(224, 26);
+			this.tsmiForegroundColor.Size = new System.Drawing.Size(211, 26);
 			this.tsmiForegroundColor.Text = "Foreground color ";
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
 			// 
 			// tsmiAutorun
 			// 
 			this.tsmiAutorun.CheckOnClick = true;
 			this.tsmiAutorun.Name = "tsmiAutorun";
-			this.tsmiAutorun.Size = new System.Drawing.Size(176, 24);
+			this.tsmiAutorun.Size = new System.Drawing.Size(210, 24);
 			this.tsmiAutorun.Text = "Autorun";
 			// 
 			// toolStripSeparator4
@@ -210,6 +176,46 @@
 			this.tsmiExit.Name = "tsmiExit";
 			this.tsmiExit.Size = new System.Drawing.Size(210, 24);
 			this.tsmiExit.Text = "Exit";
+			// 
+			// timer
+			// 
+			this.timer.Enabled = true;
+			this.timer.Tick += new System.EventHandler(this.timer_Tick);
+			// 
+			// cbShowDate
+			// 
+			this.cbShowDate.AutoSize = true;
+			this.cbShowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.cbShowDate.Location = new System.Drawing.Point(12, 237);
+			this.cbShowDate.Name = "cbShowDate";
+			this.cbShowDate.Size = new System.Drawing.Size(170, 36);
+			this.cbShowDate.TabIndex = 1;
+			this.cbShowDate.Text = "Show date";
+			this.cbShowDate.UseVisualStyleBackColor = true;
+			this.cbShowDate.CheckedChanged += new System.EventHandler(this.cbShowDate_CheckedChanged);
+			// 
+			// cbShowWeekday
+			// 
+			this.cbShowWeekday.AutoSize = true;
+			this.cbShowWeekday.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.cbShowWeekday.Location = new System.Drawing.Point(12, 279);
+			this.cbShowWeekday.Name = "cbShowWeekday";
+			this.cbShowWeekday.Size = new System.Drawing.Size(226, 36);
+			this.cbShowWeekday.TabIndex = 2;
+			this.cbShowWeekday.Text = "Show weekday";
+			this.cbShowWeekday.UseVisualStyleBackColor = true;
+			this.cbShowWeekday.CheckedChanged += new System.EventHandler(this.cbShowWeekday_CheckedChanged);
+			// 
+			// btnHideControls
+			// 
+			this.btnHideControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnHideControls.Location = new System.Drawing.Point(12, 321);
+			this.btnHideControls.Name = "btnHideControls";
+			this.btnHideControls.Size = new System.Drawing.Size(356, 65);
+			this.btnHideControls.TabIndex = 3;
+			this.btnHideControls.Text = "Hide controls";
+			this.btnHideControls.UseVisualStyleBackColor = true;
+			this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
 			// 
 			// MainForm
 			// 

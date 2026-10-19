@@ -46,11 +46,39 @@ namespace Clock
 
 		private void btnHideControls_Click(object sender, EventArgs e) =>
 	
-			SetVisibility(false);
+			SetVisibility(tsmiShowControls.Checked = false);
 	
 		
 		private void labelTime_DoubleClick(object sender, EventArgs e) =>
 		
-			SetVisibility(true);
+			SetVisibility(tsmiShowControls.Checked = true);
+
+
+		private void tsmiTopmost_CheckedChanged(object sender, EventArgs e) =>
+
+		this.TopMost = tsmiTopmost.Checked;
+
+
+		private void tsmiShowControls_CheckedChanged(object sender, EventArgs e) =>
+		
+			SetVisibility(tsmiShowControls.Checked);
+
+		private void tsmiShowDate_CheckedChanged(object sender, EventArgs e) =>
+		
+		cbShowDate.Checked = tsmiShowDate.Checked;
+		
+
+		private void tsmiShowWeekday_CheckedChanged(object sender, EventArgs e) =>
+		
+		cbShowWeekday.Checked = tsmiShowWeekday.Checked;
+
+		private void cbShowDate_CheckedChanged(object sender, EventArgs e) =>
+		
+		tsmiShowDate.Checked = cbShowDate.Checked;
+
+		private void cbShowWeekday_CheckedChanged(object sender, EventArgs e) =>
+		
+		tsmiShowWeekday.Checked= cbShowWeekday.Checked;
+		
 	}
 }
