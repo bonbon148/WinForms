@@ -47,6 +47,7 @@
 			this.labelTime.TabIndex = 0;
 			this.labelTime.Text = "Current time";
 			this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelTime.DoubleClick += new System.EventHandler(this.labelTime_DoubleClick);
 			// 
 			// timer
 			// 
@@ -63,7 +64,6 @@
 			this.cbShowDate.TabIndex = 1;
 			this.cbShowDate.Text = "Show date";
 			this.cbShowDate.UseVisualStyleBackColor = true;
-			this.cbShowDate.CheckedChanged += new System.EventHandler(this.cbShowDate_CheckedChanged);
 			// 
 			// cbShowWeekday
 			// 
