@@ -7,6 +7,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,15 @@ namespace Clock
 			LoadFonts("*.ttf");
 			LoadFonts("*.otf");
 			comboBoxFont.SelectedIndex = 0;
+		}
+		public FontDialog(Form parentWindow) : this()
+		{
+			this.StartPosition = FormStartPosition.Manual;
+			this.Location = new Point
+			(
+				parentWindow.Location.X - this.Width/4,
+				parentWindow.Location.Y + 128
+			);
 		}
 		void LoadFonts(string pattern)
 		{

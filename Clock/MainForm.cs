@@ -21,15 +21,15 @@ namespace Clock
 		{
 			InitializeComponent();
 			AllocConsole();
-			backgroundColorDialog = new ColorDialog();
-			foregroundColorDialog = new ColorDialog();
-			fontDialog = new FontDialog();
-
 			this.Location = new Point
 			(
 				Screen.PrimaryScreen.Bounds.Right - this.Width - 50,
 				Screen.PrimaryScreen.Bounds.Bottom / 20
 			);
+			backgroundColorDialog = new ColorDialog();
+			foregroundColorDialog = new ColorDialog();
+			fontDialog = new FontDialog(this);
+
 			SetVisibility(false);
 			AllocConsole();
 			
@@ -52,7 +52,7 @@ namespace Clock
 		//			  Event handlers (Обработчики событий)
 		private void timer_Tick(object sender, EventArgs e)
 		{
-			labelTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
+			labelTime.Text = DateTime.Now.ToString("hh:mm:ss");
 			if (cbShowDate.Checked) labelTime.Text += $"\n{DateTime.Now.ToString("yyyy.MM.dd")}";
 			if (cbShowWeekday.Checked) labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
 			notifyIcon.Text = labelTime.Text;
