@@ -15,6 +15,7 @@ namespace Clock
 {
 	public partial class FontDialog : Form
 	{
+		public Font Font {  get; set; }
 		public FontDialog()
 		{
 			InitializeComponent();
@@ -50,6 +51,11 @@ namespace Clock
 			PrivateFontCollection pfc = new PrivateFontCollection();
 			pfc.AddFontFile(comboBoxFont.SelectedItem.ToString());
 			labelExample.Font = new Font(pfc.Families[0], (int)counterFontSize.Value);
+		}
+
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			this.Font = labelExample.Font;
 		}
 	}
 }

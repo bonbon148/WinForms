@@ -125,7 +125,8 @@ namespace Clock
 
 		private void tsmiFont_Click(object sender, EventArgs e)
 		{
-			if (fontDialog.ShowDialog() == DialogResult.OK) ;
+			if (fontDialog.ShowDialog() == DialogResult.OK)
+				labelTime.Font = fontDialog.Font;
 		}
 	}
 }
