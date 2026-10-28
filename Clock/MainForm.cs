@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Win32;
+using System.IO;   //Input/Output
+using System.Diagnostics;
 
 namespace Clock
 {
@@ -48,6 +50,33 @@ namespace Clock
 			this.ShowInTaskbar = visible;
 			this.FormBorderStyle = visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;
 			this.TransparencyKey = visible ? Color.Empty : this.BackColor;
+		}
+		void SaveSettings()
+		{
+			string filename = "Settings.ini";
+			StreamWriter writer = new StreamWriter("Settings.ini");
+			writer.WriteLine(tsmiTopmost.Checked);
+			writer.WriteLine(tsmiShowControls.Checked);
+			writer.WriteLine(tsmiShowDate.Checked);
+			writer.WriteLine(tsmiShowWeekday.Checked);
+			writer.WriteLine(fontDialog.Filename);
+			writer.WriteLine(backgroundColorDialog.Color.ToArgb());
+			writer.WriteLine(foregroundColorDialog.Color.ToArgb());
+			writer.Close();
+			Process.Start("notepad", filename);
+		}
+		void LoadSettings()
+		{
+			string filename = "Settings.ini";
+			StreamReader reader = new StreamReader("Settings.ini");
+			
+			tsmiTopmost.Checked			= bool.Parse(reader.ReadLine());
+			tsmiShowControls.Checked	= bool.Parse(reader.ReadLine());
+			tsmiShowDate.Checked		= bool.Parse(reader.ReadLine());
+			tsmiShowWeekday.Checked		= bool.Parse(reader.ReadLine());
+	
+			reader.Close();
+			Process.Start("notepad", filename);
 		}
 
 		//			  Event handlers (Обработчики событий)
@@ -139,6 +168,23 @@ namespace Clock
 			if(tsmiAutorun.Checked)registryKey.SetValue(key_name, Application.ExecutablePath);
 			else registryKey.DeleteValue(key_name, false); //false - НЕ бросать исключение (Exception) если ключ (запись в реестре) не найден/а
 			registryKey.Dispose();
+
+		}
+
+		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			//string filename = "Settings.ini";
+			//StreamWriter writer = new StreamWriter("Settings.ini");
+			//writer.WriteLine(tsmiTopmost.Checked);
+			//writer.WriteLine(tsmiShowControls.Checked);
+			//writer.WriteLine(tsmiShowDate.Checked);
+			//writer.WriteLine(tsmiShowWeekday.Checked);
+			//writer.WriteLine(fontDialog.Filename);
+			//writer.WriteLine(backgroundColorDialog.Color.ToArgb());
+			//writer.WriteLine(foregroundColorDialog.Color.ToArgb());
+			//writer.Close();
+			//Process.Start("notepad", filename);
+			SaveSettings();
 		}
 	}
 }

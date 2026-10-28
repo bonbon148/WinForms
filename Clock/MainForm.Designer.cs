@@ -86,7 +86,7 @@
             this.toolStripSeparator4,
             this.tsmiExit});
 			this.contextMenu.Name = "contextMenu";
-			this.contextMenu.Size = new System.Drawing.Size(211, 248);
+			this.contextMenu.Size = new System.Drawing.Size(177, 220);
 			// 
 			// tsmiTopmost
 			// 
@@ -249,6 +249,7 @@
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Clock P_418";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
 			this.contextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
