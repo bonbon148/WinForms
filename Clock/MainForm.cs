@@ -79,7 +79,7 @@ namespace Clock
 			fontDialog.Filename = reader.ReadLine();
 			PrivateFontCollection pfc = new PrivateFontCollection();
 			pfc.AddFontFile($"{Application.ExecutablePath}\\..\\..\\..\\Fonts\\{fontDialog.Filename}");
-			labelTime.Font = new Font(pfc.Families[0], 32);
+			fontDialog.Font = labelTime.Font = new Font(pfc.Families[0], 32);
 
 			backgroundColorDialog.Color = labelTime.BackColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 			foregroundColorDialog.Color = labelTime.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
