@@ -43,8 +43,10 @@ namespace Clock
 				parentWindow.Location.X - this.Width/4,
 				parentWindow.Location.Y + 128
 			);
+			//ApplyFont();
 			labelExample.Font = Font;
 			comboBoxFont.SelectedItem = Filename;
+			counterFontSize.Value = (int)Font.Size;
 
 		}
 		void LoadFonts(string pattern)
