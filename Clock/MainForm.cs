@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;   //Input/Output
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Win32;
-using System.IO;   //Input/Output
-using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Clock
 {
@@ -88,6 +89,14 @@ namespace Clock
 	
 			reader.Close();
 			Process.Start("notepad", filename);
+
+			RegistryKey registryKey = Registry.CurrentUser.OpenSubKey
+			(
+				"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+				true
+			);
+			tsmiAutorun.Checked = registryKey.GetValueNames().Contains("Clock_P_418");
+			registryKey.Dispose();
 		}
 
 		//			  Event handlers (Обработчики событий)
